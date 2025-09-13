@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Biblioteca de Componentes React con Atomic Design
 
-## Getting Started
+Este proyecto demuestra la implementación de la metodología Atomic Design en React, aplicando principios SOLID y mostrando el patrón Registry. Construido con Next.js, TypeScript y Tailwind CSS, sirve como ejemplo práctico de arquitectura moderna en React.
 
-First, run the development server:
+## 🎯 Objetivos del Proyecto
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+1. **Implementación de Atomic Design**
+   - Organizar componentes siguiendo la metodología de Brad Frost
+   - Estructurar componentes en átomos, moléculas y organismos
+   - Crear una biblioteca de componentes reutilizable y escalable
+
+2. **Aplicación de Principios SOLID**
+   - Componentes con responsabilidad única
+   - Diseño extensible y mantenible
+   - Interfaces consistentes y reutilizables
+
+3. **Ejemplo del Patrón Registry**
+   - Registro centralizado de componentes
+   - Carga dinámica de componentes
+   - Sistema flexible para sustitución de componentes
+
+## 🏗 Estructura del Proyecto
+
+```
+src/
+  ├── components/
+  │   ├── atoms/        # Componentes básicos (Button, Card, Container)
+  │   ├── molecules/    # Combinaciones de átomos
+  │   └── organisms/    # Componentes complejos
+  ├── registry/         # Implementación del registro de componentes
+  └── app/             # Directorio de Next.js
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 💡 Patrones de Diseño
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Atomic Design
+- **Átomos**: Componentes básicos y fundamentales
+- **Moléculas**: Grupos de átomos funcionando juntos
+- **Organismos**: Componentes complejos y secciones completas
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Patrón Registry
+El patrón registry se implementará para:
+- Gestionar componentes de forma centralizada
+- Permitir carga dinámica de componentes
+- Facilitar pruebas A/B
+- Mantener un sistema flexible y mantenible
 
-## Learn More
+## 🛠 Tecnologías Utilizadas
 
-To learn more about Next.js, take a look at the following resources:
+- React + Next.js
+- TypeScript
+- Tailwind CSS
+- Biome (para formateo de código)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📚 Recursos de Aprendizaje
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- [Atomic Design por Brad Frost](https://atomicdesign.bradfrost.com/)
+- [Patrón Registry en TypeScript](https://www.typescriptlang.org/docs/handbook/decorators.html)
+- [Atomic Design en React](https://bradfrost.com/blog/post/atomic-web-design/)
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
