@@ -14,6 +14,7 @@ export interface Vehicle {
   trailer?: boolean;
   helmetProvided?: boolean;
   hasTachograph?: boolean;
+  condition: VehicleCondition;
 }
 
 export type VehicleFlags = {
@@ -30,3 +31,35 @@ export type VehicleFlags = {
   isLuxury?: boolean;
   requiresSpecialLicense?: boolean;
 };
+
+
+export type VehicleCondition =
+  | CarCondition
+  | TruckCondition
+  | BusCondition
+  | MotorbikeCondition;
+
+interface CarCondition {
+  kind: 'car';
+  mileage: number;
+  fuelType: 'gasoline' | 'diesel' | 'electric';
+  doors: number;
+}
+
+interface TruckCondition {
+  kind: 'truck';
+  loadCapacityKg: number;
+  trailerAttached: boolean;
+}
+
+interface BusCondition {
+  kind: 'bus';
+  routeName: string;
+  seats: number;
+}
+
+interface MotorbikeCondition {
+  kind: 'motorbike';
+  engineCC: number;
+  helmetRequired: boolean;
+}

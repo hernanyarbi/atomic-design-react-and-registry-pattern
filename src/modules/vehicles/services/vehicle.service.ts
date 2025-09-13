@@ -9,6 +9,12 @@ const mockVehicles: Vehicle[] = [
       isCar: true,
       isLuxury: true,
     },
+    condition: {
+      kind: "car",
+      mileage: 15000,
+      fuelType: "electric",
+      doors: 4,
+    },
     brand: "Tesla",
     model: "Model S",
     year: 2024,
@@ -22,6 +28,12 @@ const mockVehicles: Vehicle[] = [
       isElectric: true,
       isSUV: true,
       isCar: true,
+    },
+    condition: {
+      kind: "car",
+      mileage: 25000,
+      fuelType: "electric",
+      doors: 5,
     },
     brand: "Volkswagen",
     model: "ID.4",
@@ -39,6 +51,12 @@ const mockVehicles: Vehicle[] = [
       isCar: true,
       isSUV: true,
     },
+    condition: {
+      kind: "car",
+      mileage: 30000,
+      fuelType: "gasoline", // Híbrido gasolina
+      doors: 5,
+    },
     brand: "Toyota",
     model: "RAV4 Hybrid",
     year: 2024,
@@ -55,6 +73,12 @@ const mockVehicles: Vehicle[] = [
       isSportCar: true,
       isLuxury: true,
     },
+    condition: {
+      kind: "car",
+      mileage: 5000,
+      fuelType: "gasoline",
+      doors: 2,
+    },
     brand: "Porsche",
     model: "911",
     year: 2024,
@@ -70,6 +94,11 @@ const mockVehicles: Vehicle[] = [
       isMotorbike: true,
       requiresSpecialLicense: true,
     },
+    condition: {
+      kind: "motorbike",
+      engineCC: 1750,
+      helmetRequired: true,
+    },
     brand: "Harley-Davidson",
     model: "Street Glide",
     year: 2024,
@@ -82,6 +111,11 @@ const mockVehicles: Vehicle[] = [
     flags: {
       isMotorbike: true,
       isElectric: true,
+    },
+    condition: {
+      kind: "motorbike",
+      engineCC: 0, // Moto eléctrica
+      helmetRequired: true,
     },
     brand: "Zero",
     model: "SR/F",
@@ -100,6 +134,11 @@ const mockVehicles: Vehicle[] = [
       needsPeriodicInspection: true,
       hasTrailer: true,
     },
+    condition: {
+      kind: "truck",
+      loadCapacityKg: 25000,
+      trailerAttached: true,
+    },
     brand: "Volvo",
     model: "FH16",
     year: 2023,
@@ -117,6 +156,11 @@ const mockVehicles: Vehicle[] = [
       requiresSpecialLicense: true,
       needsPeriodicInspection: true,
     },
+    condition: {
+      kind: "bus",
+      routeName: "Ciudad-Aeropuerto",
+      seats: 55,
+    },
     brand: "Mercedes-Benz",
     model: "Tourismo",
     year: 2023,
@@ -132,6 +176,12 @@ const mockVehicles: Vehicle[] = [
       isSUV: true,
       isCar: true,
       isLuxury: true,
+    },
+    condition: {
+      kind: "car",
+      mileage: 10000,
+      fuelType: "diesel",
+      doors: 5,
     },
     brand: "Range Rover",
     model: "Autobiography",
@@ -149,29 +199,44 @@ const mockVehicles: Vehicle[] = [
       hasTrailer: false,
       needsPeriodicInspection: true,
     },
+    condition: {
+      kind: "truck",
+      loadCapacityKg: 3500,
+      trailerAttached: false,
+    },
     brand: "Ford",
     model: "Transit",
     year: 2023,
     cargoCapacityKg: 3500,
     seats: 3,
     licensePlate: "VAN-2023",
-  }
+  },
 ];
 
 export const vehicleService = {
   getAllVehicles: async (): Promise<Vehicle[]> => {
     // Simulamos un delay de red
-    await new Promise(resolve => setTimeout(resolve, 800));
+    await new Promise((resolve) => setTimeout(resolve, 800));
     return mockVehicles;
   },
 
   getVehicleById: async (id: string): Promise<Vehicle | undefined> => {
-    await new Promise(resolve => setTimeout(resolve, 400));
-    return mockVehicles.find(vehicle => vehicle.id === id);
+    await new Promise((resolve) => setTimeout(resolve, 400));
+    return mockVehicles.find((vehicle) => vehicle.id === id);
   },
 
-  getVehiclesByType: async (type: keyof Vehicle['flags']): Promise<Vehicle[]> => {
-    await new Promise(resolve => setTimeout(resolve, 600));
-    return mockVehicles.filter(vehicle => vehicle.flags[type]);
-  }
+  getVehiclesByType: async (
+    type: keyof Vehicle["flags"]
+  ): Promise<Vehicle[]> => {
+    await new Promise((resolve) => setTimeout(resolve, 600));
+    return mockVehicles.filter((vehicle) => vehicle.flags[type]);
+  },
+
+  // Nuevo método para filtrar por tipo de condición
+  getVehiclesByConditionKind: async (
+    kind: "car" | "truck" | "bus" | "motorbike"
+  ): Promise<Vehicle[]> => {
+    await new Promise((resolve) => setTimeout(resolve, 600));
+    return mockVehicles.filter((vehicle) => vehicle.condition.kind === kind);
+  },
 };
