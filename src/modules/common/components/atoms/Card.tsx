@@ -11,11 +11,11 @@ export const Card = ({
   variant = 'default',
   padding = 'medium',
 }: CardProps) => {
-  const baseStyles = 'rounded-lg';
+  const baseStyles = 'rounded-2xl';
   
   const variants = {
-    default: 'bg-white',
-    outlined: 'bg-white border border-gray-200',
+    default: 'bg-[#131620]',
+    outlined: 'bg-gray-800 border border-gray-200',
     elevated: 'bg-white shadow-md',
   };
 
