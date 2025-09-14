@@ -25,7 +25,7 @@ export const VehicleItem = ({ vehicle }: VehiclesViewProps) => {
         />
       }
     >
-      <div>
+      <div className="bg-background rounded-xl">
         <VehicleImage
           flags={vehicle.flags}
           brand={vehicle.brand}

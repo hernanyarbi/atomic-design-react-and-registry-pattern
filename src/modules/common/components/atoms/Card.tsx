@@ -14,8 +14,8 @@ export const Card = ({
   const baseStyles = 'rounded-2xl';
   
   const variants = {
-    default: 'bg-[#131620]',
-    outlined: 'bg-gray-800 border border-gray-200',
+    default: 'bg-secondary',
+    outlined: 'bg-transparent border-2 border-gray-500',
     elevated: 'bg-white shadow-md',
   };
 

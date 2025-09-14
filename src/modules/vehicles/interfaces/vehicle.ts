@@ -15,6 +15,7 @@ export interface Vehicle {
   helmetProvided?: boolean;
   hasTachograph?: boolean;
   condition: VehicleCondition;
+  electricDetails?: ElectricDetails;
 }
 
 export type VehicleFlags = {
@@ -32,6 +33,33 @@ export type VehicleFlags = {
   requiresSpecialLicense?: boolean;
 };
 
+export interface ElectricDetails {
+  // Batería y autonomía
+  batteryCapacityKWh?: number; // capacidad nominal
+  usableBatteryKWh?: number; // capacidad util (si se conoce)
+  stateOfChargePercent?: number; // % batería actual
+  estimatedRangeKm?: number; // autonomía estimada actual
+
+  // Carga
+  onboardChargerKW?: number; // potencia AC onboard
+  maxDCChargeKW?: number; // max power aceptado en DC (fast charge)
+  fastChargeSupported?: boolean;
+
+  // Puertos / adaptadores disponibles en el vehículo
+  chargingPorts?: ChargingPort[];
+
+  // Salud / otros
+  batteryHealthPercent?: number; // % salud batería
+  lastFullChargeAt?: string; // ISO timestamp
+  supportsV2G?: boolean; // vehicle-to-grid
+  thermalManagement?: boolean; // circuito de gestión térmica
+}
+
+export interface ChargingPort {
+  type: 'Type1' | 'Type2' | 'CCS' | 'CHAdeMO' | 'Tesla' | 'Other';
+  maxPowerKW?: number;
+  connectorNotes?: string; // p. ej. adaptador requerido
+}
 
 export type VehicleCondition =
   | CarCondition
@@ -40,26 +68,26 @@ export type VehicleCondition =
   | MotorbikeCondition;
 
 interface CarCondition {
-  kind: 'car';
+  kind: "car";
   mileage: number;
-  fuelType: 'gasoline' | 'diesel' | 'electric';
+  fuelType: "gasoline" | "diesel" | "electric";
   doors: number;
 }
 
 interface TruckCondition {
-  kind: 'truck';
+  kind: "truck";
   loadCapacityKg: number;
   trailerAttached: boolean;
 }
 
 interface BusCondition {
-  kind: 'bus';
+  kind: "bus";
   routeName: string;
   seats: number;
 }
 
 interface MotorbikeCondition {
-  kind: 'motorbike';
+  kind: "motorbike";
   engineCC: number;
   helmetRequired: boolean;
 }

@@ -21,6 +21,22 @@ const mockVehicles: Vehicle[] = [
     seats: 5,
     mileage: 15000,
     licensePlate: "ECO-2024",
+    electricDetails: {
+      batteryCapacityKWh: 100,
+      usableBatteryKWh: 95,
+      stateOfChargePercent: 85,
+      estimatedRangeKm: 560,
+      onboardChargerKW: 11.5,
+      maxDCChargeKW: 250,
+      fastChargeSupported: true,
+      chargingPorts: [
+        { type: 'Tesla', maxPowerKW: 250 },
+        { type: 'CCS', maxPowerKW: 250, connectorNotes: 'With included adapter' }
+      ],
+      batteryHealthPercent: 98,
+      thermalManagement: true,
+      supportsV2G: true
+    }
   },
   {
     id: "2",
@@ -41,6 +57,22 @@ const mockVehicles: Vehicle[] = [
     seats: 5,
     mileage: 25000,
     licensePlate: "ECO-2023",
+    electricDetails: {
+      batteryCapacityKWh: 82,
+      usableBatteryKWh: 77,
+      stateOfChargePercent: 70,
+      estimatedRangeKm: 420,
+      onboardChargerKW: 11,
+      maxDCChargeKW: 135,
+      fastChargeSupported: true,
+      chargingPorts: [
+        { type: 'Type2', maxPowerKW: 11 },
+        { type: 'CCS', maxPowerKW: 135 }
+      ],
+      batteryHealthPercent: 96,
+      thermalManagement: true,
+      supportsV2G: false
+    }
   },
 
   // Coches híbridos
@@ -123,6 +155,21 @@ const mockVehicles: Vehicle[] = [
     seats: 1,
     helmetProvided: true,
     licensePlate: "EMTB-24",
+    electricDetails: {
+      batteryCapacityKWh: 14.4,
+      usableBatteryKWh: 12.6,
+      stateOfChargePercent: 90,
+      estimatedRangeKm: 180,
+      onboardChargerKW: 3.3,
+      maxDCChargeKW: undefined,
+      fastChargeSupported: false,
+      chargingPorts: [
+        { type: 'Type2', maxPowerKW: 3.3 }
+      ],
+      batteryHealthPercent: 99,
+      thermalManagement: true,
+      supportsV2G: false
+    }
   },
 
   // Camiones
